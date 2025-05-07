@@ -1,10 +1,7 @@
-package com.ecaraid.intern.vehicle;
+package com.ecaraid.intern.vehicle.controllers;
 
 import com.ecaraid.intern.vehicle.entity.Vehicle;
 import com.ecaraid.intern.vehicle.services.VehicleService;
-import jakarta.annotation.Nullable;
-import lombok.AllArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -103,13 +100,13 @@ public class VehicleController {
     }
 
     @GetMapping("/search")
-    public ResponseEntity<Object> search(@RequestParam(name = "brand_id", required = false) String brandId,
+    public ResponseEntity<Object> search(@RequestParam(name = "brand", required = false) String brand,
                                          @RequestParam(name = "year", required = false) Integer year,
                                          @RequestParam(name = "price", required = false) Integer price,
                                          @RequestParam(name = "owner", required = false) String owner) {
         Map<String, Object> result = new HashMap<>();
         try {
-            List<Vehicle> vehicles = this.vehicleService.search(brandId, year, price, owner);
+            List<Vehicle> vehicles = this.vehicleService.search(brand, year, price, owner);
             result.put("status", "success");
             result.put("data", vehicles);
             return new ResponseEntity<>(result, HttpStatus.OK);

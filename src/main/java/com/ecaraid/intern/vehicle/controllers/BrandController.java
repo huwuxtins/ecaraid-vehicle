@@ -1,4 +1,4 @@
-package com.ecaraid.intern.vehicle;
+package com.ecaraid.intern.vehicle.controllers;
 
 import com.ecaraid.intern.vehicle.entity.Brand;
 import com.ecaraid.intern.vehicle.services.BrandService;

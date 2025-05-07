@@ -40,8 +40,8 @@ public class VehicleService {
         this.vehicleRepository.deleteById(id);
     }
 
-    public List<Vehicle> search(String brandId, Integer year, Integer price, String owner) {
-        return this.vehicleRepository.findByBrandIdOrYearOrPriceOrOwner(brandId, year, price, owner);
+    public List<Vehicle> search(String brand, Integer year, Integer price, String owner) {
+        return this.vehicleRepository.findByBrandNameOrYearOrPriceOrOwner(brand, year, price, owner);
     }
 
     public List<Vehicle> findByRequest(){
