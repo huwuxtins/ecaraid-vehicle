@@ -4,12 +4,11 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.sql.Date;
+import java.util.Date;
 
 @Entity
 @Table
-@Getter
-@Setter
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class Vehicle {
@@ -23,8 +22,11 @@ public class Vehicle {
     private String owner;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "brand_id")
-    @JsonIgnoreProperties({"cars"})
+    @JoinColumn(name = "brand_id", nullable = false)
+    @JsonIgnoreProperties({"vehicles"})
     private Brand brand;
+
     private Date instant;
+
+
 }

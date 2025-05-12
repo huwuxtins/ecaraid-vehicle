@@ -1,50 +1,21 @@
 package com.ecaraid.intern.vehicle.services;
 
 import com.ecaraid.intern.vehicle.entity.Vehicle;
-import com.ecaraid.intern.vehicle.repositories.VehicleRepository;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service
-public class VehicleService {
+public interface VehicleService {
+    public List<Vehicle> findAllVehicle();
 
-    private final VehicleRepository vehicleRepository;
+    public Vehicle findById(String id);
 
-    public VehicleService(VehicleRepository vehicleRepository) {
-        this.vehicleRepository = vehicleRepository;
-    }
+    public Vehicle create(Vehicle vehicle);
 
-    public List<Vehicle> findAllVehicle() {
-        return this.vehicleRepository.findAll();
-    }
+    public Vehicle update(String id, Vehicle vehicle);
 
-    public Vehicle findById(String id) {
-        return this.vehicleRepository.findById(id).orElse(null);
-    }
+    public void delete(String id);
 
-    public Vehicle create(Vehicle vehicle) {
-        return this.vehicleRepository.save(vehicle);
-    }
+    public List<Vehicle> search(String brand, Integer year, Integer price, String owner);
 
-    public Vehicle update(String id, Vehicle vehicle) {
-        Vehicle exist = this.vehicleRepository.findById(id).orElse(null);
-
-        if(exist != null) {
-            return this.vehicleRepository.save(vehicle);
-        }
-        return null;
-    }
-
-    public void delete(String id) {
-        this.vehicleRepository.deleteById(id);
-    }
-
-    public List<Vehicle> search(String brand, Integer year, Integer price, String owner) {
-        return this.vehicleRepository.findByBrandNameOrYearOrPriceOrOwner(brand, year, price, owner);
-    }
-
-    public List<Vehicle> findByRequest(){
-        return this.vehicleRepository.findByRequest();
-    }
+    public List<Vehicle> findByRequest();
 }

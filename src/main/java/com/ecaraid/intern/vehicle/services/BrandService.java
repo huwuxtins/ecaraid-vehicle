@@ -16,6 +16,8 @@ public class BrandService {
         return this.brandRepository.findAll();
     }
 
+    public Brand findById(String id) { return this.brandRepository.findById(id).orElse(null);}
+
     public Brand create(Brand brand) {
         return this.brandRepository.save(brand);
     }

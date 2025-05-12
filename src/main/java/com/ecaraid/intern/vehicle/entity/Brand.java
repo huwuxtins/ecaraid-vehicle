@@ -1,10 +1,12 @@
 package com.ecaraid.intern.vehicle.entity;
 
 import com.ecaraid.intern.vehicle.BrandType;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
+
+import java.util.List;
 
 @Entity
 @Table
@@ -19,4 +21,14 @@ public class Brand {
     private String name;
     @Enumerated(EnumType.STRING)
     private BrandType type;
+
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
+    @OneToMany(mappedBy = "brand", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+    private List<Vehicle> vehicles;
+
+    @JsonCreator
+    public Brand(@JsonProperty("id") String id) {
+        this.id = id;
+    }
 }
