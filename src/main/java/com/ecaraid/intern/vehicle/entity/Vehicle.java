@@ -28,5 +28,20 @@ public class Vehicle {
 
     private Date instant;
 
+    public Vehicle(String id, String name, int year, int price, String owner, Date instant) {
+        this.id = id;
+        this.name = name;
+        this.year = year;
+        this.price = price;
+        this.owner = owner;
+        this.instant = instant;
+    }
 
+    public Vehicle(String name, int year, int price, String owner, Date instant) {
+        this.name = name;
+        this.year = year;
+        this.price = price;
+        this.owner = owner;
+        this.instant = instant;
+    }
 }
