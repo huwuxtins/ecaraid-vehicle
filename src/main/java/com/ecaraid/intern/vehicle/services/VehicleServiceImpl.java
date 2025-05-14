@@ -5,6 +5,7 @@ import com.ecaraid.intern.vehicle.dto.VehicleDto;
 import com.ecaraid.intern.vehicle.entity.Vehicle;
 import com.ecaraid.intern.vehicle.repositories.VehicleRepository;
 import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import net.sf.jasperreports.engine.*;
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 import org.springframework.data.domain.PageRequest;
@@ -17,6 +18,7 @@ import java.util.List;
 import java.util.Map;
 
 @Service
+@Slf4j
 @AllArgsConstructor
 public class VehicleServiceImpl implements VehicleService {
   private final VehicleRepository vehicleRepository;

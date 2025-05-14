@@ -1,20 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="FirstJasper" columnCount="2" pageWidth="595" pageHeight="842" columnWidth="270" columnSpacing="15" leftMargin="20" rightMargin="20" topMargin="30" bottomMargin="30">
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports
+                                  http://jasperreports.sourceforge.net/xsd/jasperreport.xsd"
+              name="vehicle_report"
+              pageWidth="595"
+              pageHeight="842"
+              columnWidth="555"
+              leftMargin="20"
+              rightMargin="20"
+              topMargin="20"
+              bottomMargin="20"
+              uuid="a1b2c3d4-e5f6-7890-1234-56789abcdef0">
+
+    <!-- Styles -->
+    <style name="TableHeader" forecolor="#FFFFFF" backcolor="#3C8DBC" mode="Opaque" fontName="SansSerif" fontSize="12" isBold="true"/>
+    <style name="TableCell" mode="Transparent" fontName="SansSerif" fontSize="11"/>
+    <style name="Title" fontName="SansSerif" fontSize="18" isBold="true"/>
 
     <!-- Fields -->
-    <field name="brand" class="java.lang.String"/>
+    <field name="name" class="java.lang.String"/>
     <field name="year" class="java.lang.Integer"/>
     <field name="price" class="java.lang.Integer"/>
     <field name="owner" class="java.lang.String"/>
+    <field name="brandId" class="java.lang.String"/>
+    <field name="instant" class="java.util.Date"/>
 
     <!-- Title Band -->
     <title>
         <band height="50">
             <textField>
-                <reportElement x="0" y="10" width="555" height="30"/>
-                <textElement textAlignment="Center" verticalAlignment="Middle">
-                    <font size="18" isBold="true"/>
-                </textElement>
+                <reportElement x="0" y="10" width="555" height="30" style="Title"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle"/>
                 <textFieldExpression><![CDATA["Vehicle Report"]]></textFieldExpression>
             </textField>
         </band>
@@ -22,22 +39,30 @@
 
     <!-- Column Header Band -->
     <columnHeader>
-        <band height="20">
+        <band height="25">
             <staticText>
-                <reportElement x="0" y="0" width="130" height="20"/>
-                <text><![CDATA[Brand]]></text>
+                <reportElement x="0" y="0" width="100" height="25" style="TableHeader"/>
+                <text><![CDATA[Name]]></text>
             </staticText>
             <staticText>
-                <reportElement x="130" y="0" width="100" height="20"/>
+                <reportElement x="100" y="0" width="50" height="25" style="TableHeader"/>
                 <text><![CDATA[Year]]></text>
             </staticText>
             <staticText>
-                <reportElement x="230" y="0" width="100" height="20"/>
+                <reportElement x="150" y="0" width="70" height="25" style="TableHeader"/>
                 <text><![CDATA[Price]]></text>
             </staticText>
             <staticText>
-                <reportElement x="330" y="0" width="225" height="20"/>
+                <reportElement x="220" y="0" width="100" height="25" style="TableHeader"/>
                 <text><![CDATA[Owner]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="320" y="0" width="85" height="25" style="TableHeader"/>
+                <text><![CDATA[Brand ID]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="405" y="0" width="150" height="25" style="TableHeader"/>
+                <text><![CDATA[Created At]]></text>
             </staticText>
         </band>
     </columnHeader>
@@ -46,20 +71,28 @@
     <detail>
         <band height="20">
             <textField>
-                <reportElement x="0" y="0" width="130" height="20"/>
-                <textFieldExpression><![CDATA[$F{brand}]]></textFieldExpression>
+                <reportElement x="0" y="0" width="100" height="20" style="TableCell"/>
+                <textFieldExpression><![CDATA[$F{name}]]></textFieldExpression>
             </textField>
             <textField>
-                <reportElement x="130" y="0" width="100" height="20"/>
+                <reportElement x="100" y="0" width="50" height="20" style="TableCell"/>
                 <textFieldExpression><![CDATA[$F{year}]]></textFieldExpression>
             </textField>
             <textField>
-                <reportElement x="230" y="0" width="100" height="20"/>
-                <textFieldExpression><![CDATA[$F{price}]]></textFieldExpression>
+                <reportElement x="150" y="0" width="70" height="20" style="TableCell"/>
+                <textFieldExpression><![CDATA["$" + $F{price}]]></textFieldExpression>
             </textField>
             <textField>
-                <reportElement x="330" y="0" width="225" height="20"/>
+                <reportElement x="220" y="0" width="100" height="20" style="TableCell"/>
                 <textFieldExpression><![CDATA[$F{owner}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="320" y="0" width="85" height="20" style="TableCell"/>
+                <textFieldExpression><![CDATA[$F{brandId}]]></textFieldExpression>
+            </textField>
+            <textField pattern="dd-MM-yyyy HH:mm">
+                <reportElement x="405" y="0" width="150" height="20" style="TableCell"/>
+                <textFieldExpression><![CDATA[$F{instant}]]></textFieldExpression>
             </textField>
         </band>
     </detail>

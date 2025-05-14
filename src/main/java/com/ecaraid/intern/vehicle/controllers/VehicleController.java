@@ -6,9 +6,7 @@ import com.ecaraid.intern.vehicle.entity.Brand;
 import com.ecaraid.intern.vehicle.entity.Vehicle;
 import com.ecaraid.intern.vehicle.response.MessageResponse;
 import com.ecaraid.intern.vehicle.services.BrandService;
-import com.ecaraid.intern.vehicle.services.BrandServiceImpl;
 import com.ecaraid.intern.vehicle.services.VehicleService;
-import com.ecaraid.intern.vehicle.services.VehicleServiceImpl;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -48,7 +46,8 @@ public class VehicleController {
       return MessageResponse.returnResponse(null, "success", HttpStatus.NOT_FOUND);
     } catch (Exception e) {
 
-      return MessageResponse.returnResponse(e.getMessage(), "failure", HttpStatus.INTERNAL_SERVER_ERROR);
+      return MessageResponse.returnResponse(
+          e.getMessage(), "failure", HttpStatus.INTERNAL_SERVER_ERROR);
     }
   }
 
@@ -98,7 +97,8 @@ public class VehicleController {
       vehicleService.delete(id);
       return MessageResponse.returnResponse(id, "success", HttpStatus.OK);
     } catch (Exception e) {
-      return MessageResponse.returnResponse(e.getMessage(), "failure", HttpStatus.INTERNAL_SERVER_ERROR);
+      return MessageResponse.returnResponse(
+          e.getMessage(), "failure", HttpStatus.INTERNAL_SERVER_ERROR);
     }
   }
 
@@ -112,7 +112,8 @@ public class VehicleController {
 
       return MessageResponse.returnResponse(vehicles, "success", HttpStatus.OK);
     } catch (Exception e) {
-      return MessageResponse.returnResponse(e.getMessage(), "failure", HttpStatus.INTERNAL_SERVER_ERROR);
+      return MessageResponse.returnResponse(
+          e.getMessage(), "failure", HttpStatus.INTERNAL_SERVER_ERROR);
     }
   }
 
@@ -122,7 +123,8 @@ public class VehicleController {
       List<Vehicle> vehicles = this.vehicleService.findByRequest();
       return MessageResponse.returnResponse(vehicles, "success", HttpStatus.OK);
     } catch (Exception e) {
-      return MessageResponse.returnResponse(e.getMessage(), "success", HttpStatus.INTERNAL_SERVER_ERROR);
+      return MessageResponse.returnResponse(
+          e.getMessage(), "success", HttpStatus.INTERNAL_SERVER_ERROR);
     }
   }
 
@@ -138,7 +140,8 @@ public class VehicleController {
       return MessageResponse.returnResponse(pdfBytes, "success", HttpStatus.OK);
 
     } catch (Exception e) {
-      return MessageResponse.returnResponse(e.getMessage(), "failure", HttpStatus.INTERNAL_SERVER_ERROR);
+      return MessageResponse.returnResponse(
+          e.getMessage(), "failure", HttpStatus.INTERNAL_SERVER_ERROR);
     }
   }
 }
